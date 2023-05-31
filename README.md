@@ -14,4 +14,11 @@ Even with these requirements, we are not running out quota.
 - The next function that is called: `create_temp_users_table(temp_df)` or `create_temp_users_table(temp_df)`. This creates temporary table on MySQL with the records that have been updated latest. 
 - The last function call does an upsert operation using the temporary table against the actual table on the database. This ensures the data changes are updated and inserted accordingly.
 
+## What does the notebook responsible for loading users enrolled courses do?
+- This endpoint is triggered multiple times for different course IDs to get the users enrolled for that particular course. 
+- This is dependent on the courses table in the DB. When the `load_user_enrolled_courses()` is triggered. A query is run against the temporary courses table on the live DB to obtain the IDs of the latest course. 
+- The subsequent function creates a temporary user enrolled courses table in the DB.
+- The last function triggers an upsert operation just like the previous notes books
+NOTE: This table is dependent on courses table
+
 
