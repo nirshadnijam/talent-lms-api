@@ -21,4 +21,6 @@ Even with these requirements, we are not running out quota.
 - The last function triggers an upsert operation just like the previous notes books
 NOTE: This table is dependent on courses table
 
+## What happens if the API trigger fails?
+- There is a mechanism that has been setup to rerun the API calls incase of failures. Each run being triggered after delayed period of time. For example, if the API call fails in the first trigger. The application waits for 5 seconds before triggering the API again. If it fails again. It waits for 10 seconds and so on. 
 
